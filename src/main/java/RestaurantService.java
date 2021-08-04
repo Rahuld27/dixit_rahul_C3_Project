@@ -31,4 +31,10 @@ public class RestaurantService {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    public String orderTotal(Item... items){
+
+        return null;
+
+    }
 }

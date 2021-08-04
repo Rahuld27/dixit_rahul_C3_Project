@@ -6,12 +6,14 @@ import java.time.LocalTime;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class RestaurantServiceTest {
 
     RestaurantService service = new RestaurantService();
     Restaurant restaurant;
+    Item item ;
     //REFACTOR ALL THE REPEATED LINES OF CODE
 
 
@@ -84,4 +86,18 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+    //<<<<<<<<<<<<<<<<<<<<ADMIN:Order Total>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void display_order_totalAmount_after_Items_are_selected(){
+            LocalTime openingTime = LocalTime.parse("10:30:00");
+            LocalTime closingTime = LocalTime.parse("22:00:00");
+            restaurant = service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
+            restaurant.addToMenu("Sweet corn soup",119);
+            restaurant.addToMenu("Vegetable lasagne", 269);
+            assertEquals((119+269),service.orderTotal(item));
+    }
+    //<<<<<<<<<<<<<<<<<<<<ADMIN:Order Total>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
