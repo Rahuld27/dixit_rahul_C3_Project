@@ -7,13 +7,13 @@ import java.util.List;
 public class RestaurantService {
     private static List<Restaurant> restaurants = new ArrayList<>();
 
-    public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException{
+    public Restaurant findRestaurantByName(String restaurantName) throws restaurantNotFoundException {
         //DELETE ABOVE STATEMENT AND WRITE CODE HERE
-            Restaurant restaurantToBeFound = new Restaurant(restaurantName);
-            if (restaurantToBeFound.getName()==restaurantName){
-                return restaurantToBeFound;
-            }
-        throw new restaurantNotFoundException(restaurantName +" does not exists");
+        Restaurant restaurantToBeFound = new Restaurant(restaurantName);
+        if (restaurantToBeFound.getName() == restaurantName) {
+            return restaurantToBeFound;
+        }
+        throw new restaurantNotFoundException(restaurantName + " does not exists");
     }
 
     public Restaurant addRestaurant(String name, String location, LocalTime openingTime, LocalTime closingTime) {
@@ -32,9 +32,12 @@ public class RestaurantService {
         return restaurants;
     }
 
-    public String orderTotal(Item... items){
-
-        return null;
+    public String orderTotal(Item... items) {
+        String orderTotal = "" ;
+        for (int i = 0;i< items.length;i++){
+            orderTotal += items[i];
+        }
+        return orderTotal;
 
     }
 }
